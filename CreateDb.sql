@@ -1,0 +1,26 @@
+CREATE TABLE Friend
+(
+	Id INT IDENTITY,
+	Name VARCHAR(100) NOT NULL,
+	DateAdded DateTime NOT NULL,
+	CONSTRAINT PK_Friend  
+               PRIMARY KEY CLUSTERED (Id)  
+)
+GO
+
+CREATE TABLE TimelinePost
+(
+	Id INT IDENTITY,
+	PostDate DATETIME NOT NULL,
+	PostText NVARCHAR(MAX) NOT NULL,
+	PostFriendId INT NULL,
+	PostComment NVARCHAR(MAX) NULL,
+	CONSTRAINT PK_TimelinePost
+		PRIMARY KEY CLUSTERED (Id)
+)
+
+ALTER TABLE TimelinePost
+ADD CONSTRAINT FK_TimelinePost_PostFriendId_Friend
+FOREIGN KEY (PostFriendId)
+REFERENCES Friend (Id)
+GO

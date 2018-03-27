@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.dll
+*.pdb
+/FacebookExport/bin/Debug/netcoreapp2.0
+/.vs/FacebookExport/v15/Server/sqlite3
+/FacebookExport/obj
+/FacebookExportEntities/bin/Debug/netcoreapp2.0
+/FacebookExportEntities/obj
+*.suo
+/FacebookExport/appsettings.local.json
+/.vs/config/applicationhost.config
