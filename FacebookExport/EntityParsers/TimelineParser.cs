@@ -60,7 +60,7 @@ namespace FacebookExport.Parsers
                     if (nextNode.Name == "div" && !nextNode.Attributes.Any(attr => attr.Name == "class" && attr.Value == "comment"))
                     {
                         //Retrieve the friends name by getting all characters up to the beginning of a <br /> tag, which always follows the name
-                        var friendName = nextNode.InnerHtml.Substring(0, nextNode.InnerHtml.IndexOf('<'));
+                        var friendName = WebUtility.HtmlDecode(nextNode.InnerHtml.Substring(0, nextNode.InnerHtml.IndexOf('<')));
 
                         var friend = Friends.FirstOrDefault(x => x.Name == friendName);
                         if (friend != null)
@@ -84,7 +84,7 @@ namespace FacebookExport.Parsers
                     }
                 }
             }
-            var timelinePost = new TimelinePost { PostComment = postComment, PostDate = postDate, PostFriendId = postFriendId, PostText = postText };
+            var timelinePost = new TimelinePost { PostComment = WebUtility.HtmlDecode(postComment), PostDate = postDate, PostFriendId = postFriendId, PostText = WebUtility.HtmlDecode(postText) };
             return timelinePost;
         }
     }
